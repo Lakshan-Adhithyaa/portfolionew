@@ -10,10 +10,10 @@ const filters: { value: "all" | ProjectType; label: string }[] = [
   { value: "ai", label: "AI / automation" },
 ]
 
-const accentLinkClass: Record<string, string> = {
-  mint: "",
-  violet: "text-violet",
-  amber: "text-amber",
+const cardBlockClass: Record<string, string> = {
+  mint: "bg-card-mint",
+  violet: "bg-card-mint",
+  amber: "bg-card-amber",
 }
 
 export function ProjectsSection() {
@@ -32,14 +32,14 @@ export function ProjectsSection() {
       <SectionLabel number="04">Selected projects</SectionLabel>
       <div className="mb-14 grid gap-10 lg:grid-cols-2 lg:gap-24">
         <h2 className="text-[clamp(2.6rem,5.1vw,4.4rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
-          Things I&apos;ve
+          Proof of
           <br />
-          <em className="not-italic text-muted">made useful.</em>
+          <em className="not-italic text-muted">curiosity.</em>
         </h2>
         <div>
           <p className="max-w-lg text-muted leading-[1.8]">
-            A selection of builds where curiosity met a real problem, and the
-            details mattered.
+            Projects are where ideas become constraints, decisions, and
+            working software.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3" role="group" aria-label="Filter projects">
             {filters.map(({ value, label }) => (
@@ -60,21 +60,35 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      <div className="border-t border-line">
+      <div className="grid gap-6 lg:grid-cols-2">
         {visibleProjects.map((project, index) => (
-          <article
-            key={project.title}
-            className="grid grid-cols-[35px_1fr_38px] items-center gap-3 border-b border-line py-6 transition-[padding] hover:bg-white/[0.015] hover:px-2.5 md:grid-cols-[70px_1fr_50px] md:gap-4 md:py-7.5"
-          >
-            <div className="text-[10px] text-muted">0{index + 1}</div>
-            <div>
-              <div className="flex justify-between text-[10px] uppercase tracking-[0.1em] text-muted">
-                <span>{project.type === "ai" ? "AI / AUTOMATION" : "WEB DEVELOPMENT"}</span>
-                <span>{project.year}</span>
+          <article key={project.title} className="grid grid-cols-[minmax(0,0.85fr)_1fr] border border-line">
+            <div className={`relative hidden min-h-[280px] p-5 sm:block ${cardBlockClass[project.accent]}`}>
+              <span className="font-mono text-xs text-background/60">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <pre className="absolute bottom-5 left-5 right-5 whitespace-pre-wrap font-mono text-[11px] leading-relaxed text-background/70">
+                <span className="text-background/50">const</span> idea ={" "}
+                <span className="text-background/90 font-semibold">build</span>();
+                {"\n"}
+                <span className="text-background/50">return</span> impact;
+              </pre>
+            </div>
+            <div className="flex flex-col justify-between p-6 md:p-7">
+              <div>
+                <div className="flex items-center justify-between gap-3 text-[10px] uppercase tracking-[0.1em] text-muted">
+                  <span>{project.category}</span>
+                  <a
+                    href={project.href}
+                    className="flex shrink-0 items-center gap-1.5 text-foreground transition-colors hover:text-accent"
+                  >
+                    Case study <Arrow />
+                  </a>
+                </div>
+                <h3 className="my-4 text-2xl tracking-[-0.05em] md:text-[30px]">{project.title}</h3>
+                <p className="max-w-md text-sm leading-relaxed text-muted">{project.description}</p>
               </div>
-              <h3 className="my-3 text-2xl tracking-[-0.05em] md:text-[32px]">{project.title}</h3>
-              <p className="max-w-2xl text-muted">{project.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2.5">
+              <div className="mt-6 flex flex-wrap gap-2.5">
                 {project.stack.map((tag) => (
                   <span key={tag} className="border border-line px-2 py-1.5 font-mono text-[10px] text-muted">
                     {tag}
@@ -82,13 +96,6 @@ export function ProjectsSection() {
                 ))}
               </div>
             </div>
-            <a
-              href={project.href}
-              aria-label={`View ${project.title} on GitHub`}
-              className={`grid h-9.5 w-9.5 place-items-center self-center border border-line transition-colors hover:border-accent hover:text-accent ${accentLinkClass[project.accent]}`}
-            >
-              <Arrow />
-            </a>
           </article>
         ))}
       </div>

@@ -1,48 +1,40 @@
-"use client"
-
-import { useState } from "react"
-import { Arrow, SectionLabel } from "./shared"
+import { Arrow, Sparkle } from "./shared"
 
 export function ContactSection() {
-  const [copied, setCopied] = useState(false)
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard?.writeText("lakshanadhithyaa@gmail.com")
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1800)
-    } catch {
-      // Clipboard access unavailable; user can still use the mailto link.
-    }
-  }
-
   return (
-    <section id="contact" className="bg-surface-2 py-24 md:py-32">
-      <div className="mx-auto w-[min(1240px,calc(100%-40px))] md:w-[min(1240px,calc(100%-64px))]">
-        <SectionLabel number="06">Get in touch</SectionLabel>
-        <h2 className="max-w-3xl text-[clamp(2.8rem,8vw,6.6rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
-          Have an idea?
+    <section id="contact" className="py-24 md:py-36">
+      <div className="mx-auto flex w-[min(1240px,calc(100%-40px))] flex-col items-center text-center md:w-[min(1240px,calc(100%-64px))]">
+        <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+          <Sparkle /> Next chapter
+        </div>
+        <h2 className="mt-6 max-w-4xl text-[clamp(2.6rem,8vw,5.2rem)] font-extrabold leading-[0.97] tracking-[-0.06em]">
+          Let&apos;s build something
           <br />
-          <em className="not-italic text-muted">Let&apos;s make it real.</em>
+          <em className="not-italic text-muted">meaningful.</em>
         </h2>
-        <p className="my-7 max-w-md text-muted">
-          Whether you&apos;re building something ambitious or want to talk
-          about software, I&apos;d love to hear from you.
+        <p className="mt-7 max-w-lg text-muted leading-[1.8]">
+          I&apos;m open to conversations about internships, entry-level
+          opportunities, and thoughtful software.
         </p>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
           <a
             href="mailto:lakshanadhithyaa@gmail.com"
-            className="inline-flex items-center gap-3 border border-foreground bg-foreground px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] text-background transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 bg-foreground px-5 py-4 font-mono text-[11px] uppercase tracking-[0.05em] text-background transition-transform hover:-translate-y-0.5"
           >
-            Send an email <Arrow />
+            Get in touch <Arrow />
           </a>
-          <button
-            type="button"
-            onClick={copyEmail}
-            className="inline-flex items-center gap-3 border border-line px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] transition-colors hover:border-accent hover:text-accent"
+          <a
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.05em] text-muted transition-colors hover:text-accent"
+            href="https://github.com/Lakshan-Adhithyaa"
           >
-            {copied ? "Email copied" : "Copy email"}
-          </button>
+            GitHub <Arrow />
+          </a>
+          <a
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.05em] text-muted transition-colors hover:text-accent"
+            href="https://www.linkedin.com/"
+          >
+            LinkedIn <Arrow />
+          </a>
         </div>
       </div>
     </section>

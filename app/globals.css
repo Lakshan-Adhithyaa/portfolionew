@@ -13,6 +13,8 @@
   --color-accent: #7ee0a0;
   --color-violet: #b5a0ff;
   --color-amber: #e6b86a;
+  --color-card-mint: #cfe6d8;
+  --color-card-amber: #ece0c9;
 }
 
 html {
@@ -74,6 +76,32 @@ section {
   }
 }
 
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: #6de8f0;
+  transform: translate(-2px, 0.5px);
+  mix-blend-mode: screen;
+}
+
+.glitch-text::after {
+  color: #ef7fae;
+  transform: translate(2px, -0.5px);
+  mix-blend-mode: screen;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -84,5 +112,9 @@ section {
   .reveal,
   .reveal-delay {
     animation: none;
+  }
+  .glitch-text::before,
+  .glitch-text::after {
+    display: none;
   }
 }
