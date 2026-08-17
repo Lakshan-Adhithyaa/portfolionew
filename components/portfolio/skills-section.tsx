@@ -17,7 +17,7 @@ export function SkillsSection() {
             software.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-2 gap-9 gap-x-5 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-9 gap-x-5 sm:grid-cols-3">
           {skills.map((skill) => (
             <article key={skill.title} className="border-t-2 border-foreground pt-3.5">
               <span className="text-[10px] text-muted">{skill.number}</span>

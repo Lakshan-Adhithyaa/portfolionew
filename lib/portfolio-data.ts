@@ -13,6 +13,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Helm Events",
+    type: "ai",
+    year: "2025",
+    description:
+      "AI-powered event operations for when plans go off-script. Built collaboratively with my team, Helm is an AI Event Operations Agent that helps organizers handle real-time disruptions — identifying downstream impact, coordinating the right people, recommending actions, and tracking issues through to resolution, all in one operational system.",
+    stack: ["AI Agent", "Event Ops", "Automation"],
+    accent: "mint",
+    href: "https://github.com/Lakshan-Adhithyaa/helm-events",
+  },
+  {
     title: "MovieVerse",
     type: "web",
     year: "2025",
@@ -48,7 +58,6 @@ export const skills: { number: string; title: string; list: string }[] = [
   { number: "01", title: "Web development", list: "HTML · CSS · JavaScript · Bootstrap · React" },
   { number: "02", title: "Programming", list: "Python · Java · C++" },
   { number: "03", title: "Data foundations", list: "MySQL · MongoDB · Data structures" },
-  { number: "04", title: "AI & automation", list: "AI workflows · Workflow automation" },
 ]
 
 export const navItems = ["about", "skills", "projects", "journey", "contact"] as const
