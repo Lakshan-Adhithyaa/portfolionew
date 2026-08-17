@@ -1,5 +1,5 @@
 import { skills } from "@/lib/portfolio-data"
-import { SectionLabel } from "./shared"
+import { ScrollReveal, SectionLabel } from "./shared"
 
 export function SkillsSection() {
   return (
@@ -18,8 +18,8 @@ export function SkillsSection() {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
-          {skills.map((skill) => (
-            <div key={skill.title}>
+          {skills.map((skill, index) => (
+            <ScrollReveal key={skill.title} delay={index * 90}>
               <div className="flex items-baseline gap-3 border-t border-foreground pt-3.5">
                 <span className="font-mono text-[10px] text-muted">{skill.number}</span>
                 <h3 className="text-[15px]">{skill.title}</h3>
@@ -34,7 +34,7 @@ export function SkillsSection() {
                   </span>
                 ))}
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

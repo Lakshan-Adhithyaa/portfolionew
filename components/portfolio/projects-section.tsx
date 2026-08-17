@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react"
 import { projects, type ProjectType } from "@/lib/portfolio-data"
-import { Arrow, SectionLabel } from "./shared"
+import { Arrow, ScrollReveal, SectionLabel } from "./shared"
 
 const filters: { value: "all" | ProjectType; label: string }[] = [
   { value: "all", label: "All" },
@@ -30,7 +30,7 @@ export function ProjectsSection() {
       className="mx-auto w-[min(1240px,calc(100%-40px))] py-24 md:w-[min(1240px,calc(100%-64px))] md:py-32"
     >
       <SectionLabel number="04">Selected projects</SectionLabel>
-      <div className="mb-14 grid gap-10 lg:grid-cols-2 lg:gap-24">
+      <ScrollReveal className="mb-14 grid gap-10 lg:grid-cols-2 lg:gap-24">
         <h2 className="text-[clamp(2.6rem,5.1vw,4.4rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
           Proof of
           <br />
@@ -58,11 +58,16 @@ export function ProjectsSection() {
             ))}
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       <div className="grid gap-6 lg:grid-cols-2">
         {visibleProjects.map((project, index) => (
-          <article key={project.title} className="grid grid-cols-[minmax(0,0.85fr)_1fr] border border-line">
+          <ScrollReveal
+            key={project.title}
+            as="article"
+            delay={index * 90}
+            className="grid grid-cols-[minmax(0,0.85fr)_1fr] border border-line"
+          >
             <div className={`relative hidden min-h-[280px] p-5 sm:block ${cardBlockClass[project.accent]}`}>
               <span className="font-mono text-xs text-background/60">
                 {String(index + 1).padStart(2, "0")}
@@ -96,7 +101,7 @@ export function ProjectsSection() {
                 ))}
               </div>
             </div>
-          </article>
+          </ScrollReveal>
         ))}
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { SectionLabel } from "./shared"
+import { ScrollReveal, SectionLabel } from "./shared"
 
 export function AboutSection() {
   return (
@@ -8,7 +8,7 @@ export function AboutSection() {
     >
       <SectionLabel number="02">About me</SectionLabel>
       <div className="grid gap-10 lg:grid-cols-2 lg:gap-24">
-        <div>
+        <ScrollReveal>
           <h2 className="mb-6 text-[clamp(2.6rem,5.1vw,4.4rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
             Still learning.
             <br />
@@ -19,8 +19,8 @@ export function AboutSection() {
             well-structured experiences. My work spans responsive web
             development, Python, and AI-driven workflow automation.
           </p>
-        </div>
-        <div className="border border-line bg-surface text-xs">
+        </ScrollReveal>
+        <ScrollReveal delay={120} className="border border-line bg-surface text-xs">
           <div className="flex justify-between border-b border-line px-4 py-3.5 text-muted">
             <span>developer_snapshot.json</span>
             <span className="text-accent">● live</span>
@@ -39,7 +39,7 @@ export function AboutSection() {
               </div>
             ))}
           </dl>
-        </div>
+        </ScrollReveal>
       </div>
       <p className="mt-10 max-w-lg text-muted leading-[1.8] lg:mt-14 lg:ml-[50%]">
         Currently pursuing a Bachelor of Technology in Artificial Intelligence

@@ -1,5 +1,5 @@
 import { certifications, education } from "@/lib/portfolio-data"
-import { SectionLabel } from "./shared"
+import { QuantumBadge, ScrollReveal, SectionLabel } from "./shared"
 
 export function EducationSection() {
   const half = Math.ceil(certifications.length / 2)
@@ -15,17 +15,16 @@ export function EducationSection() {
         <SectionLabel number="06">Education &amp; credentials</SectionLabel>
 
         <div className="grid gap-6 lg:grid-cols-2">
+          {/* Degree card is intentionally static — no scroll/quantum animation on the degree itself. */}
           <article className="border border-line bg-surface p-7 md:p-10">
             <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
               01 / Education
             </span>
-            <h3
-              className=" mt-6 text-3xl "
-              data-text={education.degree}
-            >
-              {education.degree}
-            </h3>
+            <h3 className="mt-6 text-3xl">{education.degree}</h3>
             <p className="mt-3 font-mono text-sm text-violet">{education.field}</p>
+            <div className="mt-4">
+              <QuantumBadge>{education.honors}</QuantumBadge>
+            </div>
             <p className="mt-6 text-sm leading-relaxed text-muted">
               {education.institution}
               <br />
@@ -33,8 +32,8 @@ export function EducationSection() {
             </p>
             <div className="mt-10 flex items-center justify-between border-t border-line pt-5 text-xs">
               <div>
-                <span className="text-muted">Expected graduation </span>
-                <span className="font-semibold text-foreground">{education.graduation}</span>
+                <span className="text-muted">Batch </span>
+                <span className="font-semibold text-foreground">{education.batch}</span>
               </div>
               <div>
                 <span className="text-muted">CGPA </span>
@@ -43,7 +42,7 @@ export function EducationSection() {
             </div>
           </article>
 
-          <article className="border border-line bg-surface p-7 md:p-10">
+          <ScrollReveal as="article" delay={100} className="border border-line bg-surface p-7 md:p-10">
             <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
               02 / Certifications
             </span>
@@ -72,7 +71,7 @@ export function EducationSection() {
                 </ul>
               ))}
             </div>
-          </article>
+          </ScrollReveal>
         </div>
       </div>
     </section>

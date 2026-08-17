@@ -1,11 +1,12 @@
-import { Arrow } from "./shared"
+import { Arrow, QuantumParticleField } from "./shared"
 
 export function HeroSection() {
   return (
     <section className="relative mx-auto grid min-h-[calc(100vh-76px)] w-[min(1240px,calc(100%-40px))] items-center gap-12 pb-20 pt-16 md:w-[min(1240px,calc(100%-64px))] md:gap-24 lg:grid-cols-[1.05fr_0.75fr] lg:pb-24 lg:pt-20">
+      <QuantumParticleField count={7} />
       <div className="reveal">
         <div className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_4px_rgba(126,224,160,0.12)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_4px_rgba(79,70,229,0.14)]" />
           Available for internships &amp; entry-level roles
         </div>
         <h1 className="my-6 max-w-3xl text-[clamp(2.75rem,8vw,7rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
@@ -45,14 +46,14 @@ export function HeroSection() {
       </div>
 
       <div
-        className="reveal-delay border border-[#303a31] bg-surface shadow-[20px_25px_60px_rgba(0,0,0,0.35)] lg:rotate-[1.5deg]"
+        className="reveal-delay border border-line bg-surface shadow-[20px_25px_60px_rgba(18,20,29,0.1)] lg:rotate-[1.5deg]"
         aria-label="Developer profile terminal"
       >
         <div className="flex items-center justify-between gap-2 border-b border-line px-4 py-3 font-mono text-[10px] text-muted">
           <span className="flex gap-1.5" aria-hidden="true">
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
           </span>
           <span>lakshan@portfolio:~</span>
           <span>⌘ 01</span>

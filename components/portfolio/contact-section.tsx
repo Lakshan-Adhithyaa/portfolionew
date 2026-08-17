@@ -1,9 +1,12 @@
-import { Arrow, Sparkle } from "./shared"
+import { Arrow, ScrollReveal, Sparkle } from "./shared"
 
 export function ContactSection() {
   return (
     <section id="contact" className="py-24 md:py-36">
-      <div className="mx-auto flex w-[min(1240px,calc(100%-40px))] flex-col items-center text-center md:w-[min(1240px,calc(100%-64px))]">
+      <ScrollReveal
+        as="div"
+        className="mx-auto flex w-[min(1240px,calc(100%-40px))] flex-col items-center text-center md:w-[min(1240px,calc(100%-64px))]"
+      >
         <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
           <Sparkle /> Next chapter
         </div>
@@ -36,7 +39,7 @@ export function ContactSection() {
             LinkedIn <Arrow />
           </a>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   )
 }

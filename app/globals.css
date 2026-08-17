@@ -4,17 +4,17 @@
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-dm-mono), ui-monospace, monospace;
 
-  --color-background: #0a0d0b;
-  --color-surface: #111512;
-  --color-surface-2: #171d18;
-  --color-foreground: #edf1ec;
-  --color-muted: #9aa49b;
-  --color-line: #283029;
-  --color-accent: #7ee0a0;
-  --color-violet: #b5a0ff;
-  --color-amber: #e6b86a;
-  --color-card-mint: #cfe6d8;
-  --color-card-amber: #ece0c9;
+  --color-background: #ffffff;
+  --color-surface: #f6f7fb;
+  --color-surface-2: #eef0f7;
+  --color-foreground: #12141d;
+  --color-muted: #686f7d;
+  --color-line: #e2e4ee;
+  --color-accent: #4f46e5;
+  --color-violet: #7c3aed;
+  --color-amber: #c2680a;
+  --color-card-mint: #3454eb;
+  --color-card-amber: #e08a1a;
 }
 
 html {
@@ -30,7 +30,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: var(--color-background);
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -76,6 +76,18 @@ section {
   }
 }
 
+/* Scroll-triggered reveal, toggled by IntersectionObserver via .is-visible */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -91,15 +103,144 @@ section {
 }
 
 .glitch-text::before {
-  color: #6de8f0;
+  color: #22d3ee;
   transform: translate(-2px, 0.5px);
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
 }
 
 .glitch-text::after {
-  color: #ef7fae;
+  color: #ec4899;
   transform: translate(2px, -0.5px);
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
+}
+
+/* --- Quantum motif animations --- */
+
+@keyframes quantum-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes quantum-orbit-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes quantum-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes quantum-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate(6px, -14px);
+    opacity: 0.85;
+  }
+}
+
+.quantum-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem 0.3rem 0.3rem;
+  color: var(--color-accent);
+  background: rgba(79, 70, 229, 0.06);
+}
+
+.quantum-ring {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.quantum-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+.quantum-ring::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed var(--color-violet);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: quantum-orbit-reverse 5s linear infinite;
+}
+
+.quantum-orbiter {
+  position: absolute;
+  inset: 0;
+  animation: quantum-orbit 2.6s linear infinite;
+}
+
+.quantum-dot {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px 1px rgba(79, 70, 229, 0.7);
+}
+
+.quantum-dot-alt {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--color-violet);
+  box-shadow: 0 0 5px 1px rgba(124, 58, 237, 0.7);
+}
+
+.quantum-particle-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.quantum-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px 2px rgba(79, 70, 229, 0.55);
+  animation: quantum-float 4.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -113,8 +254,18 @@ section {
   .reveal-delay {
     animation: none;
   }
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .glitch-text::before,
   .glitch-text::after {
     display: none;
+  }
+  .quantum-ring::after,
+  .quantum-orbiter,
+  .quantum-particle {
+    animation: none;
   }
 }
