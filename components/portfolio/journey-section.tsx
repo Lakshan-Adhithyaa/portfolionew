@@ -26,15 +26,17 @@ export function JourneySection() {
             key={item.title}
             as="article"
             delay={index * 90}
-            className="grid gap-3 border-b border-line py-9 md:grid-cols-[110px_24px_1fr] md:items-start md:gap-8"
+            className="group grid gap-3 border-b border-line py-9 transition-all duration-300 hover:pl-3 hover:pr-0 md:grid-cols-[110px_24px_1fr] md:items-start md:gap-8"
           >
             <span className="font-mono text-[11px] text-muted">{item.date}</span>
             <span
-              className="mt-1 h-2.5 w-2.5 rounded-full border border-accent"
+              className="mt-1 h-2.5 w-2.5 rounded-full border border-accent transition-transform duration-300 group-hover:scale-125 group-hover:bg-accent"
               aria-hidden="true"
             />
             <div>
-              <h3 className="text-2xl tracking-[-0.04em] md:text-[28px]">{item.title}</h3>
+              <h3 className="text-2xl tracking-[-0.04em] transition-colors duration-300 group-hover:text-accent md:text-[28px]">
+                {item.title}
+              </h3>
               <p className="mt-2 font-mono text-[13px] text-accent">{item.company}</p>
               <p className="mt-3 text-sm text-muted">{item.stack}</p>
             </div>

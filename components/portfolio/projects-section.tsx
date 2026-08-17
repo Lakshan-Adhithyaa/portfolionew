@@ -10,12 +10,6 @@ const filters: { value: "all" | ProjectType; label: string }[] = [
   { value: "ai", label: "AI / automation" },
 ]
 
-const cardBlockClass: Record<string, string> = {
-  mint: "bg-card-mint",
-  violet: "bg-card-mint",
-  amber: "bg-card-amber",
-}
-
 export function ProjectsSection() {
   const [filter, setFilter] = useState<"all" | ProjectType>("all")
 
@@ -66,9 +60,9 @@ export function ProjectsSection() {
             key={project.title}
             as="article"
             delay={index * 90}
-            className="grid grid-cols-[minmax(0,0.85fr)_1fr] border border-line"
+            className="group grid grid-cols-[minmax(0,0.85fr)_1fr] border border-line transition-all duration-300 hover:-translate-y-1 hover:border-foreground hover:shadow-[10px_14px_0_0_var(--color-surface-2)]"
           >
-            <div className={`relative hidden min-h-[280px] p-5 sm:block ${cardBlockClass[project.accent]}`}>
+            <div className="relative hidden min-h-[280px] overflow-hidden bg-card-block p-5 transition-transform duration-500 ease-out group-hover:scale-[1.03] sm:block">
               <span className="font-mono text-xs text-background/60">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -78,6 +72,10 @@ export function ProjectsSection() {
                 {"\n"}
                 <span className="text-background/50">return</span> impact;
               </pre>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+              />
             </div>
             <div className="flex flex-col justify-between p-6 md:p-7">
               <div>
@@ -85,17 +83,25 @@ export function ProjectsSection() {
                   <span>{project.category}</span>
                   <a
                     href={project.href}
-                    className="flex shrink-0 items-center gap-1.5 text-foreground transition-colors hover:text-accent"
+                    className="underline-grow flex shrink-0 items-center gap-1.5 text-foreground transition-colors hover:text-accent"
                   >
-                    Case study <Arrow />
+                    Case study{" "}
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                      <Arrow />
+                    </span>
                   </a>
                 </div>
-                <h3 className="my-4 text-2xl tracking-[-0.05em] md:text-[30px]">{project.title}</h3>
+                <h3 className="my-4 text-2xl tracking-[-0.05em] transition-colors duration-300 group-hover:text-accent md:text-[30px]">
+                  {project.title}
+                </h3>
                 <p className="max-w-md text-sm leading-relaxed text-muted">{project.description}</p>
               </div>
               <div className="mt-6 flex flex-wrap gap-2.5">
                 {project.stack.map((tag) => (
-                  <span key={tag} className="border border-line px-2 py-1.5 font-mono text-[10px] text-muted">
+                  <span
+                    key={tag}
+                    className="border border-line px-2 py-1.5 font-mono text-[10px] text-muted transition-colors duration-200 hover:border-foreground hover:bg-foreground hover:text-background"
+                  >
                     {tag}
                   </span>
                 ))}

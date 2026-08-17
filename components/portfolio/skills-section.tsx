@@ -19,8 +19,8 @@ export function SkillsSection() {
         </div>
         <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
           {skills.map((skill, index) => (
-            <ScrollReveal key={skill.title} delay={index * 90}>
-              <div className="flex items-baseline gap-3 border-t border-foreground pt-3.5">
+            <ScrollReveal key={skill.title} delay={index * 90} className="group">
+              <div className="flex items-baseline gap-3 border-t border-foreground pt-3.5 transition-colors duration-300 group-hover:border-accent">
                 <span className="font-mono text-[10px] text-muted">{skill.number}</span>
                 <h3 className="text-[15px]">{skill.title}</h3>
               </div>
@@ -28,7 +28,7 @@ export function SkillsSection() {
                 {skill.list.map((item) => (
                   <span
                     key={item}
-                    className="border border-line px-3 py-2.5 font-mono text-[11px] text-muted transition-colors hover:border-accent hover:text-accent"
+                    className="cursor-default border border-line px-3 py-2.5 font-mono text-[11px] text-muted transition-all duration-200 hover:-translate-x-1 hover:border-foreground hover:bg-foreground hover:text-background"
                   >
                     {item}
                   </span>

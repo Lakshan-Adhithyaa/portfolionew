@@ -59,12 +59,14 @@ export function EducationSection() {
                     return (
                       <li
                         key={cert}
-                        className="flex gap-3 border-b border-line py-4 text-sm leading-snug"
+                        className="group flex gap-3 border-b border-line py-4 text-sm leading-snug transition-all duration-200 hover:pl-2"
                       >
-                        <span className="font-mono text-xs text-accent">
+                        <span className="font-mono text-xs text-accent transition-transform duration-200 group-hover:scale-110">
                           {String(number).padStart(2, "0")}
                         </span>
-                        <span className="text-foreground/90">{cert}</span>
+                        <span className="text-foreground/90 transition-colors duration-200 group-hover:text-foreground">
+                          {cert}
+                        </span>
                       </li>
                     )
                   })}
