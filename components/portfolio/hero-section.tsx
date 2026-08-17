@@ -1,11 +1,12 @@
-import { Arrow } from "./shared"
+import { Arrow, QuantumParticleField } from "./shared"
 
 export function HeroSection() {
   return (
     <section className="relative mx-auto grid min-h-[calc(100vh-76px)] w-[min(1240px,calc(100%-40px))] items-center gap-12 pb-20 pt-16 md:w-[min(1240px,calc(100%-64px))] md:gap-24 lg:grid-cols-[1.05fr_0.75fr] lg:pb-24 lg:pt-20">
+      <QuantumParticleField count={7} />
       <div className="reveal">
         <div className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_4px_rgba(126,224,160,0.12)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_0_4px_rgba(35,38,45,0.14)]" />
           Available for internships &amp; entry-level roles
         </div>
         <h1 className="my-6 max-w-3xl text-[clamp(2.75rem,8vw,7rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
@@ -20,15 +21,21 @@ export function HeroSection() {
         <div className="my-8 flex flex-wrap items-center gap-3">
           <a
             href="#projects"
-            className="inline-flex items-center gap-3 border border-foreground bg-foreground px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] text-background transition-transform hover:-translate-y-0.5"
+            className="shine-hover group inline-flex items-center gap-3 border border-foreground bg-foreground px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] text-background transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[6px_8px_0_0_var(--color-line)]"
           >
-            View projects <Arrow />
+            View projects{" "}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              <Arrow />
+            </span>
           </a>
           <a
             href="mailto:lakshanadhithyaa@gmail.com"
-            className="inline-flex items-center gap-3 border border-line px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] transition-colors hover:border-accent hover:text-accent"
+            className="group inline-flex items-center gap-3 border border-line px-4 py-3.5 font-mono text-[11px] uppercase tracking-[0.05em] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
           >
-            Get in touch <Arrow />
+            Get in touch{" "}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              <Arrow />
+            </span>
           </a>
         </div>
         <div className="flex flex-wrap items-center gap-5 font-mono text-[11px] text-muted">
@@ -45,14 +52,14 @@ export function HeroSection() {
       </div>
 
       <div
-        className="reveal-delay border border-[#303a31] bg-surface shadow-[20px_25px_60px_rgba(0,0,0,0.35)] lg:rotate-[1.5deg]"
+        className="reveal-delay border border-line bg-surface shadow-[20px_25px_60px_rgba(18,20,29,0.1)] transition-transform duration-500 ease-out lg:rotate-[1.5deg] lg:hover:rotate-0 lg:hover:-translate-y-1.5"
         aria-label="Developer profile terminal"
       >
         <div className="flex items-center justify-between gap-2 border-b border-line px-4 py-3 font-mono text-[10px] text-muted">
           <span className="flex gap-1.5" aria-hidden="true">
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
-            <i className="h-2 w-2 rounded-full bg-[#3a453b]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
+            <i className="h-2 w-2 rounded-full bg-[#d3d7e2]" />
           </span>
           <span>lakshan@portfolio:~</span>
           <span>⌘ 01</span>

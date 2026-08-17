@@ -46,6 +46,17 @@ export const projects: Project[] = [
     accent: "amber",
     href: "https://github.com/Lakshan-Adhithyaa",
   },
+  {
+    title: "SolarShare",
+    type: "web",
+    category: "Virtual net metering platform",
+    year: "2025",
+    description:
+      "A virtual net metering platform letting renters and apartment residents draw on shared community solar farms — no rooftop installation required. An allocation engine paired with a blockchain-based credit system transparently calculates and distributes each subscriber's share of generation.",
+    stack: ["Blockchain", "Allocation engine", "Clean energy"],
+    accent: "violet",
+    href: "https://github.com/Lakshan-Adhithyaa",
+  },
 ]
 
 export const skills: { number: string; title: string; list: string[] }[] = [
@@ -86,9 +97,10 @@ export const experience: ExperienceItem[] = [
 export const education = {
   degree: "Bachelor of Technology",
   field: "Artificial Intelligence and Machine Learning",
+  honors: "Quantum Honors",
   institution: "R.M.D. Engineering College",
   location: "R.S.M Nagar, Kavaraipettai, Gummidipoondi",
-  graduation: "January 2028",
+  batch: "2024 – 2028",
   cgpa: "8.19",
 }
 

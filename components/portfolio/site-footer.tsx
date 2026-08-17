@@ -8,7 +8,10 @@ export function SiteFooter() {
         <span className="order-3 flex w-full items-center justify-center gap-1.5 md:order-none md:w-auto">
           Built with intention <Sparkle className="h-3 w-3 text-accent" />
         </span>
-        <a className="transition-colors hover:text-accent" href="#top">
+        <a
+          className="underline-grow inline-flex items-center gap-1 transition-all duration-200 hover:-translate-y-0.5 hover:text-accent"
+          href="#top"
+        >
           Back to top ↑
         </a>
       </div>
