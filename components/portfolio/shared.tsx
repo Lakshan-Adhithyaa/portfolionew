@@ -10,19 +10,10 @@ export function Arrow({ down = false }: { down?: boolean }) {
   )
 }
 
-export function Sparkle({ className = "h-3 w-3" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6L12 2z" />
-    </svg>
-  )
-}
-
+/**
+ * Numbered catalogue label used to open each section — mirrors the small
+ * plate you'd find beside a piece in a gallery or an entry in a monograph.
+ */
 export function SectionLabel({
   number,
   children,
@@ -31,8 +22,9 @@ export function SectionLabel({
   children: React.ReactNode
 }) {
   return (
-    <div className="mb-16 flex gap-5 border-t border-line pt-3.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted md:mb-11">
+    <div className="mb-16 flex items-baseline gap-4 font-sans text-[11px] uppercase tracking-[0.18em] text-muted md:mb-24">
       <span className="text-foreground">{number}</span>
+      <i className="h-px w-10 bg-line" aria-hidden="true" />
       <span>{children}</span>
     </div>
   )
@@ -52,7 +44,7 @@ export function ScrollReveal({
   children: React.ReactNode
   className?: string
   delay?: number
-  as?: "div" | "article" | "section"
+  as?: "div" | "article" | "section" | "li"
 }) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
@@ -93,44 +85,46 @@ export function ScrollReveal({
   )
 }
 
-/** A small pill with an animated orbiting-electron ring, for quantum-flavored callouts. */
-export function QuantumBadge({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
+/** A hairline rule that grows in from the left the first time it's scrolled into view. */
+export function RuleGrow({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            observer.disconnect()
+          }
+        }
+      },
+      { threshold: 0.3 },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <span className={`quantum-badge font-mono text-[11px] tracking-[0.04em] ${className}`}>
-      <span className="quantum-ring" aria-hidden="true">
-        <span className="quantum-orbiter">
-          <span className="quantum-dot" />
-          <span className="quantum-dot-alt" />
-        </span>
-      </span>
-      {children}
-    </span>
+    <div
+      ref={ref}
+      className={`rule-grow h-px bg-line ${visible ? "is-visible" : ""} ${className}`}
+      aria-hidden="true"
+    />
   )
 }
 
-/** A handful of softly floating particles, meant to sit inside a relatively positioned parent. */
-export function QuantumParticleField({ count = 6 }: { count?: number }) {
-  const particles = Array.from({ length: count }, (_, index) => index)
-  return (
-    <span className="quantum-particle-field" aria-hidden="true">
-      {particles.map((index) => (
-        <span
-          key={index}
-          className="quantum-particle"
-          style={{
-            top: `${(index * 37) % 100}%`,
-            left: `${(index * 53 + 10) % 100}%`,
-            animationDelay: `${index * 0.6}s`,
-            animationDuration: `${3.6 + (index % 3) * 0.8}s`,
-          }}
-        />
-      ))}
-    </span>
-  )
+/** A quiet dashed marker with a single slow-rotating arc — for the quantum-honors credential. */
+export function QuantumMark() {
+  return <span className="quantum-mark" aria-hidden="true" />
 }

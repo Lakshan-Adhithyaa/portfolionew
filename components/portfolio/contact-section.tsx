@@ -1,43 +1,48 @@
-import { Arrow, ScrollReveal, Sparkle } from "./shared"
+import { ScrollReveal } from "./shared"
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 md:py-36">
+    <section id="contact" className="py-28 md:py-40">
       <ScrollReveal
         as="div"
-        className="mx-auto flex w-[min(1240px,calc(100%-40px))] flex-col items-center text-center md:w-[min(1240px,calc(100%-64px))]"
+        className="mx-auto w-[min(1320px,calc(100%-40px))] md:w-[min(1320px,calc(100%-64px))]"
       >
-        <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
-          <Sparkle /> Next chapter
-        </div>
-        <h2 className="mt-6 max-w-4xl text-[clamp(2.6rem,8vw,5.2rem)] font-extrabold leading-[0.97] tracking-[-0.06em]">
-          Let&apos;s build something
+        <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-muted">07 — Next chapter</span>
+
+        <h2 className="mt-8 max-w-5xl font-serif text-[clamp(2.8rem,9vw,6.5rem)] italic leading-[0.98] tracking-[-0.02em] text-foreground">
+          Let&apos;s build
           <br />
-          <em className="not-italic text-muted">meaningful.</em>
+          something meaningful.
         </h2>
-        <p className="mt-7 max-w-lg text-muted leading-[1.8]">
-          I&apos;m open to conversations about internships, entry-level
-          opportunities, and thoughtful software.
-        </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-          <a
-            href="mailto:lakshanadhithyaa@gmail.com"
-            className="inline-flex items-center gap-3 bg-foreground px-5 py-4 font-mono text-[11px] uppercase tracking-[0.05em] text-background transition-transform hover:-translate-y-0.5"
-          >
-            Get in touch <Arrow />
-          </a>
-          <a
-            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.05em] text-muted transition-colors hover:text-accent"
-            href="https://github.com/Lakshan-Adhithyaa"
-          >
-            GitHub <Arrow />
-          </a>
-          <a
-            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.05em] text-muted transition-colors hover:text-accent"
-            href="https://www.linkedin.com/"
-          >
-            LinkedIn <Arrow />
-          </a>
+
+        <div className="mt-14 flex flex-col gap-10 border-t border-line pt-10 md:flex-row md:items-end md:justify-between">
+          <p className="max-w-md font-sans text-[15px] leading-[1.85] text-muted">
+            I&apos;m open to conversations about internships, entry-level
+            opportunities, and thoughtful software.
+          </p>
+
+          <div className="flex flex-col gap-3 font-serif text-2xl italic md:items-end md:text-right">
+            <a
+              href="mailto:lakshanadhithyaa@gmail.com"
+              className="text-foreground underline decoration-line decoration-1 underline-offset-8 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              lakshanadhithyaa@gmail.com
+            </a>
+            <div className="flex gap-6 font-sans text-[11px] not-italic uppercase tracking-[0.15em] text-muted md:justify-end">
+              <a
+                className="underline decoration-line decoration-1 underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground"
+                href="https://github.com/Lakshan-Adhithyaa"
+              >
+                GitHub
+              </a>
+              <a
+                className="underline decoration-line decoration-1 underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground"
+                href="https://www.linkedin.com/"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
     </section>

@@ -3,37 +3,33 @@ import { ScrollReveal, SectionLabel } from "./shared"
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="bg-surface-2 py-24 md:py-32">
-      <div className="mx-auto w-[min(1240px,calc(100%-40px))] md:w-[min(1240px,calc(100%-64px))]">
-        <SectionLabel number="03">Technical toolkit</SectionLabel>
-        <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-24">
-          <h2 className="text-[clamp(2.6rem,5.1vw,4.4rem)] font-extrabold leading-[0.97] tracking-[-0.075em]">
-            Tools for the
-            <br />
-            <em className="not-italic text-muted">work at hand.</em>
+    <section id="skills" className="bg-surface py-24 md:py-32">
+      <div className="mx-auto w-[min(1320px,calc(100%-40px))] md:w-[min(1320px,calc(100%-64px))]">
+        <SectionLabel number="03">Toolkit</SectionLabel>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-6">
+          <h2 className="col-span-1 font-serif text-[clamp(2rem,4vw,3rem)] italic leading-[1.05] tracking-[-0.01em] lg:col-span-5">
+            Tools for the work at hand.
           </h2>
-          <p className="max-w-lg text-muted leading-[1.8] lg:justify-self-end lg:text-right">
-            Technologies I&apos;ve used to learn, ship, and explore real-world
-            software.
+          <p className="col-span-1 max-w-md font-sans text-[15px] leading-[1.85] text-muted lg:col-span-4 lg:col-start-9">
+            Technologies I&apos;ve used to learn, ship, and explore
+            real-world software.
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
+
+        <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((skill, index) => (
             <ScrollReveal key={skill.title} delay={index * 90}>
               <div className="flex items-baseline gap-3 border-t border-foreground pt-3.5">
-                <span className="font-mono text-[10px] text-muted">{skill.number}</span>
-                <h3 className="text-[15px]">{skill.title}</h3>
+                <span className="font-sans text-[10px] tracking-[0.1em] text-muted">{skill.number}</span>
+                <h3 className="font-serif text-lg italic">{skill.title}</h3>
               </div>
-              <div className="mt-5 flex flex-col gap-2.5">
+              <ul className="mt-5 flex flex-col gap-2.5 font-sans text-[13px] text-muted">
                 {skill.list.map((item) => (
-                  <span
-                    key={item}
-                    className="border border-line px-3 py-2.5 font-mono text-[11px] text-muted transition-colors hover:border-accent hover:text-accent"
-                  >
+                  <li key={item} className="border-b border-line py-1.5">
                     {item}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </ScrollReveal>
           ))}
         </div>

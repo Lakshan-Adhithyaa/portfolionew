@@ -1,20 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
 
-  --color-background: #ffffff;
-  --color-surface: #f6f7fb;
-  --color-surface-2: #eef0f7;
-  --color-foreground: #12141d;
-  --color-muted: #686f7d;
-  --color-line: #e2e4ee;
-  --color-accent: #4f46e5;
-  --color-violet: #7c3aed;
-  --color-amber: #c2680a;
-  --color-card-mint: #3454eb;
-  --color-card-amber: #e08a1a;
+  --color-background: #f5f2ea;
+  --color-surface: #faf8f2;
+  --color-foreground: #20201d;
+  --color-muted: #686862;
+  --color-line: #d7d2c7;
+  --color-accent: #7c8878;
 }
 
 html {
@@ -30,7 +25,7 @@ body {
 
 ::selection {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-surface);
 }
 
 :focus-visible {
@@ -39,48 +34,14 @@ body {
 }
 
 section {
-  scroll-margin-top: 90px;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-.cursor {
-  display: inline-block;
-  width: 7px;
-  height: 14px;
-  margin-left: 2px;
-  background: var(--color-accent);
-  animation: blink 1s step-end infinite;
-}
-
-.reveal {
-  animation: reveal-up 0.7s ease both;
-}
-
-.reveal-delay {
-  animation: reveal-up 0.7s ease 0.15s both;
-}
-
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  scroll-margin-top: 88px;
 }
 
 /* Scroll-triggered reveal, toggled by IntersectionObserver via .is-visible */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal-on-scroll.is-visible {
@@ -88,167 +49,75 @@ section {
   transform: translateY(0);
 }
 
-.glitch-text {
-  position: relative;
-  display: inline-block;
+.reveal {
+  animation: reveal-up 0.8s ease both;
 }
 
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  opacity: 0.55;
-  pointer-events: none;
+.reveal-delay {
+  animation: reveal-up 0.8s ease 0.18s both;
 }
 
-.glitch-text::before {
-  color: #22d3ee;
-  transform: translate(-2px, 0.5px);
-  mix-blend-mode: multiply;
-}
-
-.glitch-text::after {
-  color: #ec4899;
-  transform: translate(2px, -0.5px);
-  mix-blend-mode: multiply;
-}
-
-/* --- Quantum motif animations --- */
-
-@keyframes quantum-orbit {
+@keyframes reveal-up {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(18px);
   }
   to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes quantum-orbit-reverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes quantum-pulse {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(0.94);
-  }
-  50% {
     opacity: 1;
-    transform: scale(1.06);
+    transform: translateY(0);
   }
 }
 
-@keyframes quantum-float {
-  0%,
-  100% {
-    transform: translate(0, 0);
-    opacity: 0.35;
+/* Hairline rule that grows in on reveal, used as a quiet section divider. */
+.rule-grow {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rule-grow.is-visible {
+  transform: scaleX(1);
+}
+
+/* Understated dashed marker for the honors credential — a quiet nod to the
+   subject matter rather than a decorative flourish. Rotation only, no glow. */
+@keyframes quantum-spin {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: translate(6px, -14px);
-    opacity: 0.85;
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.quantum-badge {
+.quantum-mark {
   position: relative;
   display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  border: 1px solid var(--color-accent);
-  border-radius: 999px;
-  padding: 0.3rem 0.85rem 0.3rem 0.3rem;
-  color: var(--color-accent);
-  background: rgba(79, 70, 229, 0.06);
-}
-
-.quantum-ring {
-  position: relative;
-  width: 22px;
-  height: 22px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 
-.quantum-ring::before {
+.quantum-mark::before {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px dashed var(--color-accent);
+  border: 1px solid var(--color-accent);
   border-radius: 50%;
-  opacity: 0.55;
 }
 
-.quantum-ring::after {
+.quantum-mark::after {
   content: "";
   position: absolute;
   inset: 3px;
-  border: 1px dashed var(--color-violet);
+  border-top: 1px solid var(--color-accent);
   border-radius: 50%;
-  opacity: 0.4;
-  animation: quantum-orbit-reverse 5s linear infinite;
-}
-
-.quantum-orbiter {
-  position: absolute;
-  inset: 0;
-  animation: quantum-orbit 2.6s linear infinite;
-}
-
-.quantum-dot {
-  position: absolute;
-  top: -2px;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 6px 1px rgba(79, 70, 229, 0.7);
-}
-
-.quantum-dot-alt {
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  margin-left: -2px;
-  border-radius: 50%;
-  background: var(--color-violet);
-  box-shadow: 0 0 5px 1px rgba(124, 58, 237, 0.7);
-}
-
-.quantum-particle-field {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.quantum-particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 8px 2px rgba(79, 70, 229, 0.55);
-  animation: quantum-float 4.5s ease-in-out infinite;
+  animation: quantum-spin 6s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .cursor {
-    animation: none;
   }
   .reveal,
   .reveal-delay {
@@ -259,13 +128,11 @@ section {
     transform: none;
     transition: none;
   }
-  .glitch-text::before,
-  .glitch-text::after {
-    display: none;
+  .rule-grow {
+    transform: scaleX(1);
+    transition: none;
   }
-  .quantum-ring::after,
-  .quantum-orbiter,
-  .quantum-particle {
+  .quantum-mark::after {
     animation: none;
   }
 }

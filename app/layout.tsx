@@ -1,17 +1,18 @@
 import type { Metadata, Viewport } from "next"
-import { Manrope, DM_Mono } from "next/font/google"
+import { Fraunces, Inter } from "next/font/google"
 import "./globals.css"
 
-const manrope = Manrope({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-manrope",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
 })
 
-const dmMono = DM_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-mono",
-  weight: ["400", "500"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600"],
 })
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#f5f2ea",
   width: "device-width",
   initialScale: 1,
 }
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`bg-background ${manrope.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`bg-background ${fraunces.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )
