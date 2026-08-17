@@ -42,16 +42,7 @@ export const projects: Project[] = [
     accent: "violet",
     href: "https://github.com/Lakshan-Adhithyaa",
   },
-  {
-    title: "Interface experiments",
-    type: "web",
-    year: "ongoing",
-    description:
-      "Small, intentional builds exploring responsive layout, component systems, and the details that make software feel considered.",
-    stack: ["React", "CSS", "UX"],
-    accent: "amber",
-    href: "https://github.com/Lakshan-Adhithyaa",
-  },
+  
 ]
 
 export const skills: { number: string; title: string; list: string }[] = [
