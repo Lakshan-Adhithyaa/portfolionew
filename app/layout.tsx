@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Manrope, DM_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -39,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`bg-background ${manrope.variable} ${dmMono.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">{children}<Analytics/></body>
     </html>
   )
 }
