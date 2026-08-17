@@ -20,7 +20,7 @@ export function EducationSection() {
               01 / Education
             </span>
             <h3
-              className="glitch-text mt-6 text-3xl tracking-[-0.04em] md:text-4xl"
+              className=" mt-6 text-3xl "
               data-text={education.degree}
             >
               {education.degree}
