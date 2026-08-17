@@ -1,15 +1,5 @@
+export type ProjectAccent = "mint" | "violet" | "amber"
 export type ProjectType = "web" | "ai"
-
-export interface CaseStudy {
-  context: string
-  problem: string
-  approach: string
-  system: string
-  interface: string
-  contribution: string
-  outcome: string
-  reflection: string
-}
 
 export interface Project {
   title: string
@@ -18,9 +8,8 @@ export interface Project {
   year: string
   description: string
   stack: string[]
-  image: string
+  accent: ProjectAccent
   href: string
-  caseStudy?: CaseStudy
 }
 
 export const projects: Project[] = [
@@ -32,26 +21,8 @@ export const projects: Project[] = [
     description:
       "AI-powered event operations for when plans go off-script. Built collaboratively with my team, Helm is an AI Event Operations Agent that helps organizers handle real-time disruptions — identifying downstream impact, coordinating the right people, recommending actions, and tracking issues through to resolution, all in one operational system.",
     stack: ["AI Agent", "Event Ops", "Automation"],
-    image: "/images/projects/helm-events.png",
+    accent: "mint",
     href: "https://github.com/Lakshan-Adhithyaa/helm-events",
-    caseStudy: {
-      context:
-        "Live events run on a script that never survives contact with reality — a vendor is late, a room floods, a speaker misses a flight. Organizers absorb these shocks manually, over group chats and phone calls, while the event itself keeps moving.",
-      problem:
-        "Disruptions are rarely isolated. A fifteen-minute delay in one session cascades into catering, staffing, and attendee communication, but no single person on an event team has visibility into every downstream effect at once.",
-      approach:
-        "We treated the event as a live dependency graph rather than a static schedule, and designed an agent that reasons over that graph — surfacing who and what a disruption touches before a human has to piece it together.",
-      system:
-        "Helm ingests the event's run-of-show, staffing map, and vendor contacts, then listens for reported incidents. An agent layer classifies each incident, traces its downstream impact across the dependency graph, and drafts a resolution plan with the people who need to act.",
-      interface:
-        "Organizers work from a single operational view: an incident feed, an impact map showing what's affected, and a recommended action queue they can approve or edit in one tap — built to be usable from a phone in a loud venue.",
-      contribution:
-        "I worked within the team on the incident-classification and impact-tracing logic, and built the operational UI that turns the agent's reasoning into an interface an organizer can act on under pressure.",
-      outcome:
-        "A working prototype that took an event team from manually re-deriving impact on every disruption to reviewing a system-generated plan and coordinating from a shared view of the incident.",
-      reflection:
-        "The hardest part wasn't the AI — it was resisting the urge to automate the decision itself. Organizers needed a system that reasoned quickly and then got out of the way, not one that tried to be the decision-maker.",
-    },
   },
   {
     title: "MovieVerse",
@@ -61,7 +32,7 @@ export const projects: Project[] = [
     description:
       "A BookMyShow-inspired experience for browsing movies and moving through ticket booking workflows.",
     stack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    image: "/images/projects/movieverse.png",
+    accent: "mint",
     href: "https://github.com/Lakshan-Adhithyaa",
   },
   {
@@ -72,7 +43,7 @@ export const projects: Project[] = [
     description:
       "A Generative AI project that automates postmortem report generation and supports root-cause analysis workflows.",
     stack: ["Python", "Generative AI", "Automation"],
-    image: "/images/projects/postmortor.png",
+    accent: "amber",
     href: "https://github.com/Lakshan-Adhithyaa",
   },
   {
@@ -83,26 +54,8 @@ export const projects: Project[] = [
     description:
       "A virtual net metering platform letting renters and apartment residents draw on shared community solar farms — no rooftop installation required. An allocation engine paired with a blockchain-based credit system transparently calculates and distributes each subscriber's share of generation.",
     stack: ["Blockchain", "Allocation engine", "Clean energy"],
-    image: "/images/projects/solarshare.png",
+    accent: "violet",
     href: "https://github.com/Lakshan-Adhithyaa",
-    caseStudy: {
-      context:
-        "Rooftop solar rewards homeowners who own a roof. Renters and apartment residents — a majority of energy users in dense cities — have no equivalent path onto clean generation, even when a community solar farm sits a few kilometers away.",
-      problem:
-        "Community solar exists, but allocating its output fairly among subscribers who never touch the physical asset is opaque by default: who generated what, on which day, and whose credit is it?",
-      approach:
-        "Rather than treat allocation as a billing afterthought, I designed it as the product's core system — an engine that meters generation, splits it by subscription share, and settles it through credits every subscriber can independently verify.",
-      system:
-        "An allocation engine ingests farm-level generation data and each subscriber's committed share, computing individual entitlements on a fixed interval. Those entitlements are written as credits to a blockchain-based ledger, so allocation history is transparent and cannot be quietly altered.",
-      interface:
-        "Subscribers see a simple dashboard: their live share of the farm's output, accumulating credits, and a running record of allocations — the blockchain settlement layer stays invisible unless someone wants to audit it.",
-      contribution:
-        "I designed the allocation logic end to end and the credit-settlement flow that ties computed shares to verifiable ledger entries, along with the subscriber-facing dashboard.",
-      outcome:
-        "A working model of virtual net metering that removes the rooftop requirement entirely — subscribing to a share of a community farm becomes as simple as subscribing to a utility plan.",
-      reflection:
-        "Transparency was the real design constraint, not the blockchain itself. The technology only mattered insofar as it let a subscriber trust a number they had no way to independently measure.",
-    },
   },
 ]
 
