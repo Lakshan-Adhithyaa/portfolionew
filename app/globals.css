@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+
+  --color-background: #0a0d0b;
+  --color-surface: #111512;
+  --color-surface-2: #171d18;
+  --color-foreground: #edf1ec;
+  --color-muted: #9aa49b;
+  --color-line: #283029;
+  --color-accent: #7ee0a0;
+  --color-violet: #b5a0ff;
+  --color-amber: #e6b86a;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-background);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  margin-left: 2px;
+  background: var(--color-accent);
+  animation: blink 1s step-end infinite;
+}
+
+.reveal {
+  animation: reveal-up 0.7s ease both;
+}
+
+.reveal-delay {
+  animation: reveal-up 0.7s ease 0.15s both;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cursor {
+    animation: none;
+  }
+  .reveal,
+  .reveal-delay {
+    animation: none;
+  }
+}
