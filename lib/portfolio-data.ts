@@ -106,11 +106,8 @@ export const education = {
 
 export const certifications: string[] = [
   "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
-  "Oracle Cloud Infrastructure 2025 Certified DevOps Professional",
-  "Oracle APEX Cloud Developer Certified Professional",
   "NPTEL — Database Management System",
   "Infosys Springboard — W3.CSS for Web Development",
-  "HTML5 — The Language",
   "C++ Practical Organogram in C++",
   "Java Programming Fundamentals",
   "MongoDB CRUD Operations",
