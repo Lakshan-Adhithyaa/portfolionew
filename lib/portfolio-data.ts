@@ -33,7 +33,7 @@ export const projects: Project[] = [
       "A BookMyShow-inspired experience for browsing movies and moving through ticket booking workflows.",
     stack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
     accent: "mint",
-    href: "https://github.com/Lakshan-Adhithyaa",
+    href: "https://github.com/Lakshan-Adhithyaa/movieverse-hub",
   },
   {
     title: "PostMortor",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
       "A Generative AI project that automates postmortem report generation and supports root-cause analysis workflows.",
     stack: ["Python", "Generative AI", "Automation"],
     accent: "amber",
-    href: "https://github.com/Lakshan-Adhithyaa",
+    href: "https://github.com/Lakshan-Adhithyaa/postmortor",
   },
   {
     title: "SolarShare",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
       "A virtual net metering platform letting renters and apartment residents draw on shared community solar farms — no rooftop installation required. An allocation engine paired with a blockchain-based credit system transparently calculates and distributes each subscriber's share of generation.",
     stack: ["Blockchain", "Allocation engine", "Clean energy"],
     accent: "violet",
-    href: "https://github.com/Lakshan-Adhithyaa",
+    href: "https://solarshare.aathil.com/",
   },
 ]
 
